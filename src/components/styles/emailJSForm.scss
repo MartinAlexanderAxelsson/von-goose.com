@@ -1,0 +1,80 @@
+.emailJS__form-container {
+  display: flex;
+  justify-content: center;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__section {
+      &__input {
+        width: 21vw;
+        padding: 2vw 0vw 0.2vw 0.2vw;
+        margin: 1vw;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: 2px solid blue;
+        color: blue;
+        outline: none;
+      }
+
+      &__input::placeholder {
+        color: blue;
+        font-family: "Rubik", sans-serif;
+      }
+    }
+
+    &__textarea {
+      resize: none;
+      overflow: hidden;
+      width: 44vw;
+      margin-top: 6vh;
+      height: 18px;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      border-bottom: 2px solid blue;
+      outline: none;
+    }
+
+    &__textarea::placeholder {
+      color: blue;
+      font-family: "Rubik", sans-serif;
+    }
+
+    &__button {
+      background: none;
+      color: blue;
+      font-family: "Rubik", sans-serif;
+      border: 2px solid blue;
+      border-radius: 3px;
+      width: 120px;
+      padding: 15px;
+      margin-top: 6vh;
+      outline: none;
+      font-size: 18px;
+    }
+
+    &__button:hover:enabled {
+      cursor: pointer;
+      background: blue;
+      color: rgb(255, 255, 255);
+    }
+
+    &__button:active:enabled {
+      background-image: url("../../images/smiley.png");
+      height: 55.7px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &__button:disabled {
+      border: 2px solid rgba(0, 0, 255, 0.315);
+      color: rgba(0, 0, 255, 0.315);
+    }
+  }
+}

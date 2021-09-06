@@ -1,0 +1,294 @@
+$breakpoint1: 600px;
+
+@keyframes animateHeight {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 80vh;
+  }
+}
+
+@keyframes animateOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+@keyframes animateColor {
+  0% {
+    color: rgba(0, 0, 255, 0.644);
+  }
+  100% {
+    color: blue;
+  }
+}
+@keyframes animateVisibility {
+  0% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+/* ------------------Letters-------------- */
+@mixin letterWidth {
+  width: 30px;
+  @media (min-width: $breakpoint1) {
+    width: 50px;
+  }
+}
+.letters-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2vh;
+  z-index: 10;
+  @media (max-width: $breakpoint1) {
+    margin-top: 0;
+    justify-content: space-between;
+  }
+  &__link-container {
+    &__letter1 {
+      @include letterWidth;
+      animation: 8s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter2 {
+      @include letterWidth;
+      animation: 11s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter3 {
+      @include letterWidth;
+      animation: 6s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter4 {
+      @include letterWidth;
+      animation: 13s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter5 {
+      @include letterWidth;
+      animation: 3s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter6 {
+      @include letterWidth;
+      animation: 9s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter7 {
+      @include letterWidth;
+      animation: 10s ease-in-out 0s 100 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter8 {
+      @include letterWidth;
+      animation: 12s ease-in-out 0s 1 animateOpacity;
+      cursor: pointer;
+    }
+
+    &__letter1:hover,
+    &__letter2:hover,
+    &__letter3:hover,
+    &__letter4:hover,
+    &__letter5:hover,
+    &__letter6:hover,
+    &__letter7:hover,
+    &__letter8:hover {
+      animation: 1s ease-in-out 0s 100 animateOpacity;
+    }
+  }
+}
+
+/* ------------------Lines-------------- */
+@mixin line {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  width: 22vw;
+  overflow: hidden;
+}
+.all-lines-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  height: 0vh;
+  z-index: 100;
+  margin-top: -15vh;
+
+  &__line1-container {
+    @include line;
+    animation: 5s ease-out 0s 1 animateHeight;
+  }
+
+  &__line2-container {
+    @include line;
+    animation: 8s ease-out 0s 1 animateHeight;
+  }
+
+  &__line3-container {
+    @include line;
+    animation: 11s ease-out 0s 1 animateHeight;
+  }
+  &__line1-container__line,
+  &__line2-container__line,
+  &__line3-container__line {
+    height: 70vh;
+    /* media query on width of lines on bigger screen */
+  }
+}
+
+/* ---------------Menus and Links--------------- */
+@mixin menu {
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  letter-spacing: 7px;
+  font-weight: bold;
+  font-size: 15px;
+  width: fit-content;
+  cursor: default;
+}
+
+.menus-container {
+  margin-top: 71vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    width: 22vw;
+
+    &__menu-1 {
+      @include menu;
+      color: blue;
+      animation: 3.6s step-end 0s 1 animateVisibility;
+    }
+    &__menu-2 {
+      @include menu;
+      color: blue;
+      animation: 5.7s step-end 0s 1 animateVisibility;
+      text-decoration: none;
+    }
+    &__menu-3 {
+      @include menu;
+      color: blue;
+      animation: 7.8s step-end 0s 1 animateVisibility;
+    }
+    &__menu-1__hover {
+      @include menu;
+      color: rgba(0, 0, 0, 0.349);
+      animation: 3.6s step-end 0s 1 animateVisibility;
+    }
+    &__menu-2__hover {
+      @include menu;
+      color: rgba(0, 0, 0, 0.349);
+      animation: 5.7s step-end 0s 1 animateVisibility;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    &__menu-3__hover {
+      @include menu;
+      color: rgba(0, 0, 0, 0.349);
+      animation: 7.8s step-end 0s 1 animateVisibility;
+    }
+
+    &__menu-1:hover,
+    &__menu-2:hover,
+    &__menu-3:hover {
+      color: rgba(0, 0, 0, 0.349);
+    }
+  }
+}
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &__link-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 22vw;
+    visibility: hidden;
+
+    &__img1,
+    &__img2,
+    &__img3 {
+      width: 58px;
+      padding: 1vw 12px 0px 12px;
+    }
+  }
+
+  &__link-1__displayed {
+    visibility: visible;
+    animation: 3s ease 0s 1 animateOpacity;
+  }
+
+  &__link-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 22vw;
+    visibility: hidden;
+
+    &__animation {
+      display: flex;
+      flex-direction: column;
+
+      &__video {
+        height: 100px;
+        z-index: 1;
+      }
+      &__coverup {
+        position: absolute;
+        margin-top: -10px;
+        width: 130px;
+        height: 20px;
+        background: white;
+        z-index: 10;
+      }
+    }
+  }
+
+  &__link-2__displayed {
+    visibility: visible;
+    animation: 3s ease 0s 1 animateOpacity;
+  }
+
+  &__link-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: rgb(67, 15, 163);
+    width: 22vw;
+    visibility: hidden;
+    &__img1,
+    &__img2,
+    &__img3 {
+      width: 58px;
+      padding: 1vw 12px 0px 12px;
+    }
+  }
+
+  &__link-3__displayed {
+    visibility: visible;
+    animation: 3s ease 0s 1 animateOpacity;
+  }
+}

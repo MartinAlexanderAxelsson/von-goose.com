@@ -1,0 +1,13 @@
+.static {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(201, 219, 190);
+
+  &__img {
+    width: 300px;
+    height: 230px;
+  }
+}

@@ -1,0 +1,21 @@
+to scss:
+
+coding X
+emailJSform X
+form X
+heartbeat X
+main X
+morse X
+static X
+tape X
+
+to scss mobile:
+
+coding
+emailJSForm
+form
+heartbeat
+main
+morse
+static
+tape
