@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import scriptwave_video from "../video/Scriptwave_video.mp4";
-import scriptbeat_video from "../video/Scriptbeat_video.mp4";
-import styled from "styled-components";
-import { VolumeUp, VolumeOff } from "@styled-icons/zondicons";
-import pixelman from "../video/pixelman_giffy.gif";
-import "./styles/coding.scss";
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import scriptwave_video from "../video/Scriptwave_video.mp4"
+import scriptbeat_video from "../video/Scriptbeat_video.mp4"
+import styled from "styled-components"
+import { VolumeUp, VolumeOff } from "@styled-icons/zondicons"
+import pixelman from "../video/pixelman_giffy.gif"
+import "./styles/coding.scss"
 
 const VolOnIcon = styled(VolumeUp)`
   color: white;
@@ -17,7 +17,7 @@ const VolOnIcon = styled(VolumeUp)`
   :hover {
     color: rgb(104, 104, 104);
   }
-`;
+`
 
 const VolOffIcon = styled(VolumeOff)`
   color: white;
@@ -29,14 +29,14 @@ const VolOffIcon = styled(VolumeOff)`
   :hover {
     color: rgb(104, 104, 104);
   }
-`;
+`
 
 export default function Coding() {
-  const [scriptwave, setScriptwave] = useState(false);
-  const [joyride, setJoyride] = useState(false);
-  const [scriptbeat, setScriptbeat] = useState(false);
-  const [addProject, setAddProject] = useState(false);
-  const [muted, setMuted] = useState(true);
+  const [scriptwave, setScriptwave] = useState(false)
+  const [joyride, setJoyride] = useState(false)
+  const [scriptbeat, setScriptbeat] = useState(false)
+  const [addProject, setAddProject] = useState(false)
+  const [muted, setMuted] = useState(true)
 
   return (
     <>
@@ -184,6 +184,7 @@ export default function Coding() {
               <img
                 className="main-coding__display-container__addproject__giffy"
                 src={pixelman}
+                alt=""
               ></img>
             </div>
           ) : (
@@ -192,5 +193,5 @@ export default function Coding() {
         </div>
       </main>
     </>
-  );
+  )
 }
