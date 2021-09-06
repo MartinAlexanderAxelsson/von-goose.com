@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import v from "../images/v.png";
-import o1 from "../images/1o.png";
-import n from "../images/n.png";
-import g from "../images/g.png";
-import o2 from "../images/2o.png";
-import o3 from "../images/3o.png";
-import s from "../images/s.png";
-import e from "../images/e.png";
-import back from "../images/back.png";
-import axios from "axios";
-import EmailJSForm from "./EmailJSForm";
-import { Link } from "react-router-dom";
-import "./styles/form.scss";
+import React, { useState } from "react"
+import v from "../images/v.png"
+import o1 from "../images/1o.png"
+import n from "../images/n.png"
+import g from "../images/g.png"
+import o2 from "../images/2o.png"
+import o3 from "../images/3o.png"
+import s from "../images/s.png"
+import e from "../images/e.png"
+import back from "../images/back.png"
+import axios from "axios"
+import EmailJSForm from "./EmailJSForm"
+import { Link } from "react-router-dom"
+import "./styles/form.scss"
 
 export default function Form() {
   return (
@@ -21,6 +21,7 @@ export default function Form() {
           <img
             src={v}
             className="letters-container__link-container__letter1"
+            alt=""
           ></img>
         </Link>
 
@@ -31,6 +32,7 @@ export default function Form() {
           <img
             src={o1}
             className="letters-container__link-container__letter2"
+            alt=""
           ></img>
         </a>
 
@@ -41,6 +43,7 @@ export default function Form() {
           <img
             src={n}
             className="letters-container__link-container__letter3"
+            alt=""
           ></img>
         </a>
 
@@ -48,6 +51,7 @@ export default function Form() {
           <img
             src={g}
             className="letters-container__link-container__letter4"
+            alt=""
           ></img>
         </Link>
 
@@ -58,6 +62,7 @@ export default function Form() {
           <img
             src={o2}
             className="letters-container__link-container__letter5"
+            alt=""
           ></img>
         </a>
 
@@ -68,6 +73,7 @@ export default function Form() {
           <img
             src={o3}
             className="letters-container__link-container__letter6"
+            alt=""
           ></img>
         </a>
 
@@ -75,6 +81,7 @@ export default function Form() {
           <img
             src={s}
             className="letters-container__link-container__letter7"
+            alt=""
           ></img>
         </Link>
 
@@ -82,6 +89,7 @@ export default function Form() {
           <img
             src={e}
             className="letters-container__link-container__letter8"
+            alt=""
           ></img>
         </Link>
       </div>
@@ -109,5 +117,5 @@ export default function Form() {
         </Link> */}
       </div>
     </div>
-  );
+  )
 }
