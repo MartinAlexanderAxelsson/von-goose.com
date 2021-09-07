@@ -188,7 +188,6 @@ export default function Coding() {
             )}
           </div>
           <div
-            // style={scriptwave || scriptbeat || addProject ? colorActive : null}
             style={joyrideStyle}
             className="main-coding__links__link-container"
             onMouseEnter={() => setJoyride(true)}
