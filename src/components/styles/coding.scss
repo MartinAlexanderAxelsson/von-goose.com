@@ -81,6 +81,7 @@ $CODING-color: rgb(255, 255, 255);
       align-items: center;
       justify-content: center;
       flex: 1;
+      transition: 0s;
 
       &__a {
         color: $main-color;
@@ -89,10 +90,12 @@ $CODING-color: rgb(255, 255, 255);
         font-weight: bold;
         font-size: 12px;
         text-decoration: none;
+        transition: 0.2s;
       }
     }
 
     &__link-container:hover {
+      transition: 0.5s ease;
       background: $main-color;
     }
     &__link-container:hover .main-coding__links__link-container__a {
@@ -113,7 +116,7 @@ $CODING-color: rgb(255, 255, 255);
       background: $main-color;
       min-height: calc(100vh - 60px);
       min-width: 80vw;
-
+      transition: 0.5s;
       &__p-container {
         display: flex;
         flex-direction: column;
@@ -172,7 +175,7 @@ $CODING-color: rgb(255, 255, 255);
       background: $main-color;
       min-height: calc(100vh - 60px);
       min-width: 80vw;
-
+      transition: 0.5s;
       &__p {
         width: 150px;
         font-family: "Rubik", sans-serif;
@@ -205,6 +208,7 @@ $CODING-color: rgb(255, 255, 255);
       background: $main-color;
       min-height: calc(100vh - 60px);
       min-width: 80vw;
+      transition: 0.5s;
       &__giffy {
         width: 20vw;
         height: auto;

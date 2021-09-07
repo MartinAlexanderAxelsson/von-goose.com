@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import scriptwave_video from "../video/Scriptwave_video.mp4"
-import scriptbeat_video from "../video/Scriptbeat_video.mp4"
-import styled from "styled-components"
-import { VolumeUp, VolumeOff } from "@styled-icons/zondicons"
-import pixelman from "../video/pixelman_giffy.gif"
-import "./styles/coding.scss"
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import scriptwave_video from "../video/Scriptwave_video.mp4";
+import scriptbeat_video from "../video/Scriptbeat_video.mp4";
+import styled from "styled-components";
+import { VolumeUp, VolumeOff } from "@styled-icons/zondicons";
+import pixelman from "../video/pixelman_giffy.gif";
+import "./styles/coding.scss";
 
 const VolOnIcon = styled(VolumeUp)`
   color: white;
@@ -14,10 +14,11 @@ const VolOnIcon = styled(VolumeUp)`
   cursor: pointer;
   margin-bottom: -20px;
   margin-top: 10px;
+  transition: 0.2s;
   :hover {
     color: rgb(104, 104, 104);
   }
-`
+`;
 
 const VolOffIcon = styled(VolumeOff)`
   color: white;
@@ -26,17 +27,120 @@ const VolOffIcon = styled(VolumeOff)`
   cursor: pointer;
   margin-bottom: -20px;
   margin-top: 10px;
+  transition: 0.2s;
   :hover {
     color: rgb(104, 104, 104);
   }
-`
+`;
 
 export default function Coding() {
-  const [scriptwave, setScriptwave] = useState(false)
-  const [joyride, setJoyride] = useState(false)
-  const [scriptbeat, setScriptbeat] = useState(false)
-  const [addProject, setAddProject] = useState(false)
-  const [muted, setMuted] = useState(true)
+  const [scriptwave, setScriptwave] = useState(false);
+  const [joyride, setJoyride] = useState(false);
+  const [scriptbeat, setScriptbeat] = useState(false);
+  const [addProject, setAddProject] = useState(false);
+  const [muted, setMuted] = useState(true);
+
+  const displaySoundIcon = {
+    visibility: "unset",
+  };
+
+  const hideSoundIcon = {
+    visibility: "hidden",
+  };
+
+  const [joyrideStyle, setJoyrideStyle] = useState();
+  const [scriptwaveStyle, setScriptwaveStyle] = useState();
+  const [scriptbeatStyle, setScriptbeatStyle] = useState();
+  const [addprojectStyle, setAddprojectStyle] = useState();
+
+  const handleStyleChange = () => {
+    if (scriptwave || addProject || scriptbeat || joyride) {
+      if (scriptwave) {
+        setScriptwaveStyle({
+          background: "rgb(29, 29, 29)",
+          transition: "0.5s",
+        });
+        setJoyrideStyle({
+          background: "rgba(29, 29, 29, 0.200)",
+          transition: "0.5s",
+        });
+        setScriptbeatStyle({
+          background: "rgba(29, 29, 29, 0.100)",
+          transition: "0.5s",
+        });
+        setAddprojectStyle({
+          background: "rgba(29, 29, 29, 0.000)",
+          transition: "0.5s",
+        });
+      }
+
+      if (joyride) {
+        setJoyrideStyle({
+          background: "rgb(29, 29, 29)",
+          transition: "0.5s",
+        });
+        setScriptwaveStyle({
+          background: "rgba(29, 29, 29, 0.200)",
+          transition: "0.5s",
+        });
+        setScriptbeatStyle({
+          background: "rgba(29, 29, 29, 0.200)",
+          transition: "0.5s",
+        });
+        setAddprojectStyle({
+          background: "rgba(29, 29, 29, 0.100)",
+          transition: "0.5s",
+        });
+      }
+
+      if (scriptbeat) {
+        setScriptbeatStyle({
+          background: "rgb(29, 29, 29)",
+          transition: "0.5s",
+        });
+        setJoyrideStyle({
+          background: "rgba(29, 29, 29, 0.200)",
+          transition: "0.5s",
+        });
+        setScriptwaveStyle({
+          background: "rgba(29, 29, 29, 0.100)",
+          transition: "0.5s",
+        });
+        setAddprojectStyle({
+          background: "rgba(29, 29, 29, 0.200)",
+          transition: "0.5s",
+        });
+      }
+
+      if (addProject) {
+        setAddprojectStyle({
+          background: "rgb(29, 29, 29)",
+          transition: "0.5s",
+        });
+        setJoyrideStyle({
+          background: "rgba(29, 29, 29, 0.100)",
+          transition: "0.5s",
+        });
+        setScriptbeatStyle({
+          background: "rgba(29, 29, 29, 0.200)",
+          transition: "0.5s",
+        });
+        setScriptwaveStyle({
+          background: "rgba(29, 29, 29, 0.000)",
+          transition: "0.5s",
+        });
+      }
+    } else {
+      setScriptwaveStyle(null);
+      setJoyrideStyle(null);
+      setScriptbeatStyle(null);
+      setAddprojectStyle(null);
+    }
+  };
+
+  useEffect(() => {
+    handleStyleChange();
+  }, [scriptwave, joyride, addProject, scriptbeat]);
 
   return (
     <>
@@ -59,6 +163,7 @@ export default function Coding() {
       <main className="main-coding">
         <div className="main-coding__links">
           <div
+            style={scriptwaveStyle}
             className="main-coding__links__link-container"
             onMouseEnter={() => setScriptwave(true)}
             onMouseLeave={() => setScriptwave(false)}
@@ -71,12 +176,20 @@ export default function Coding() {
             </a>
 
             {muted === false ? (
-              <VolOnIcon onClick={() => setMuted(muted ? false : true)} />
+              <VolOnIcon
+                style={scriptwave ? displaySoundIcon : hideSoundIcon}
+                onClick={() => setMuted(muted ? false : true)}
+              />
             ) : (
-              <VolOffIcon onClick={() => setMuted(muted ? false : true)} />
+              <VolOffIcon
+                style={scriptwave ? displaySoundIcon : hideSoundIcon}
+                onClick={() => setMuted(muted ? false : true)}
+              />
             )}
           </div>
           <div
+            // style={scriptwave || scriptbeat || addProject ? colorActive : null}
+            style={joyrideStyle}
             className="main-coding__links__link-container"
             onMouseEnter={() => setJoyride(true)}
             onMouseLeave={() => setJoyride(false)}
@@ -89,6 +202,7 @@ export default function Coding() {
             </a>
           </div>
           <div
+            style={scriptbeatStyle}
             className="main-coding__links__link-container"
             onMouseEnter={() => setScriptbeat(true)}
             onMouseLeave={() => setScriptbeat(false)}
@@ -99,13 +213,21 @@ export default function Coding() {
             >
               SCRIPTBEAT
             </a>
+
             {muted === false ? (
-              <VolOnIcon onClick={() => setMuted(muted ? false : true)} />
+              <VolOnIcon
+                style={scriptbeat ? displaySoundIcon : hideSoundIcon}
+                onClick={() => setMuted(muted ? false : true)}
+              />
             ) : (
-              <VolOffIcon onClick={() => setMuted(muted ? false : true)} />
+              <VolOffIcon
+                style={scriptbeat ? displaySoundIcon : hideSoundIcon}
+                onClick={() => setMuted(muted ? false : true)}
+              />
             )}
           </div>
           <div
+            style={addprojectStyle}
             onMouseEnter={() => setAddProject(true)}
             onMouseLeave={() => setAddProject(false)}
             className="main-coding__links__link-container"
@@ -193,5 +315,5 @@ export default function Coding() {
         </div>
       </main>
     </>
-  )
+  );
 }
