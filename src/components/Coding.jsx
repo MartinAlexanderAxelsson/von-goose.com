@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import scriptwave_video from "../video/Scriptwave_video.mp4";
 import scriptbeat_video from "../video/Scriptbeat_video.mp4";
 import styled from "styled-components";
 import { VolumeUp, VolumeOff } from "@styled-icons/zondicons";
 import pixelman from "../video/pixelman_giffy.gif";
+import { Context } from "../context/Context";
 import "./styles/coding.scss";
 
 const VolOnIcon = styled(VolumeUp)`
@@ -34,6 +35,7 @@ const VolOffIcon = styled(VolumeOff)`
 `;
 
 export default function Coding() {
+  const { setContactFormColor } = useContext(Context);
   const [scriptwave, setScriptwave] = useState(false);
   const [joyride, setJoyride] = useState(false);
   const [scriptbeat, setScriptbeat] = useState(false);
@@ -232,6 +234,7 @@ export default function Coding() {
             className="main-coding__links__link-container"
           >
             <Link
+              onClick={setContactFormColor(true)}
               className="main-coding__links__link-container__a"
               to={"/form"}
             >

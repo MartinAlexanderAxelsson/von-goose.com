@@ -7,6 +7,9 @@
   background: rgb(138, 154, 170);
 
   &__img {
-    width: 400px;
+    width: 80vw;
+    @media (min-width: 400px) {
+      width: 400px;
+    }
   }
 }

@@ -1,12 +1,31 @@
 .heartbeat {
   display: flex;
-
+  flex-direction: column;
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
   &__img {
-    width: 50vw;
-    height: 100vh;
+    width: 100vw;
+    height: 50vh;
+    @media (min-width: 600px) {
+      width: 100vw;
+      height: 100vh;
+    }
+    @media (min-width: 1200px) {
+      width: 50vw;
+      height: 100vh;
+    }
   }
   &__img2 {
-    width: 50vw;
-    height: 100vh;
+    width: 100vw;
+    height: 50vh;
+    @media (min-width: 600px) {
+      display: none;
+    }
+    @media (min-width: 1200px) {
+      display: unset;
+      width: 50vw;
+      height: 100vh;
+    }
   }
 }

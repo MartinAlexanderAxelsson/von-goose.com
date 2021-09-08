@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import emailjs from "emailjs-com";
-import "./styles/emailJSForm.scss";
+import { Context } from "../context/Context";
+// import "./styles/emailJSForm.scss";
+import "./styles/emailJSForm.css";
 
 export default function EmailJSForm() {
+  const { contactFormColor } = useContext(Context);
   const ref = useRef();
 
   const [input, setInput] = useState();
@@ -11,6 +14,17 @@ export default function EmailJSForm() {
   const service = process.env.REACT_APP_SERVICE;
   const template = process.env.REACT_APP_TEMPLATE;
   const user = process.env.REACT_APP_USER;
+
+  const root = document.documentElement;
+  root.style.setProperty(
+    "--main-color",
+
+    contactFormColor ? "rgb(29, 29, 29)" : "blue"
+  );
+  root.style.setProperty(
+    "--buttonBorder-color",
+    contactFormColor ? "rgb(29, 29, 29, 0.315)" : "rgba(0, 0, 255, 0.315)"
+  );
 
   function handleSubmit(e) {
     e.preventDefault();

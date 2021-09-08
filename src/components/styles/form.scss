@@ -1,10 +1,13 @@
+$main-color: blue;
+$codingPage-color: rgb(29, 29, 29);
+
 .contact-container {
   display: flex;
   justify-content: center;
   margin-top: 3vw;
 
   &__h3 {
-    color: blue;
+    color: $main-color;
     font-family: "Rubik", sans-serif;
     font-size: 40px;
     letter-spacing: 1vw;
@@ -18,7 +21,7 @@
   margin-bottom: 10vw;
   &__link {
     text-decoration: none;
-    color: blue;
+    color: $main-color;
     font-family: "Rubik", sans-serif;
     font-size: 14px;
     letter-spacing: 7px;

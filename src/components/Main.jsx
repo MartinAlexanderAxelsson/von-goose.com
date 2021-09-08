@@ -1,27 +1,29 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import line from "../images/line.jpg"
-import spotify from "../images/Spotify_Icon_RGB_Green.png"
-import sc from "../images/SoundCloud.png"
-import yt from "../images/YT_logo.png"
-import github from "../images/git.png"
-import linkedin from "../images/linked.png"
-import mail from "../images/mail.png"
-import v from "../images/v.png"
-import o1 from "../images/1o.png"
-import n from "../images/n.png"
-import g from "../images/g.png"
-import o2 from "../images/2o.png"
-import o3 from "../images/3o.png"
-import s from "../images/s.png"
-import e from "../images/e.png"
-import coding_animation from "../video/coding.mp4"
-import "./styles/main.scss"
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import line from "../images/line.jpg";
+import spotify from "../images/Spotify_Icon_RGB_Green.png";
+import sc from "../images/SoundCloud.png";
+import yt from "../images/YT_logo.png";
+import github from "../images/git.png";
+import linkedin from "../images/linked.png";
+import mail from "../images/mail.png";
+import v from "../images/v.png";
+import o1 from "../images/1o.png";
+import n from "../images/n.png";
+import g from "../images/g.png";
+import o2 from "../images/2o.png";
+import o3 from "../images/3o.png";
+import s from "../images/s.png";
+import e from "../images/e.png";
+import coding_animation from "../video/Coding_animation.mp4";
+import { Context } from "../context/Context";
+import "./styles/main.scss";
 
 export default function Main() {
-  const [about, setAbout] = useState(false)
-  const [coding, setCoding] = useState(false)
-  const [music, setMusic] = useState(false)
+  const { setContactFormColor } = useContext(Context);
+  const [about, setAbout] = useState(false);
+  const [coding, setCoding] = useState(false);
+  const [music, setMusic] = useState(false);
 
   return (
     <div>
@@ -195,7 +197,7 @@ export default function Main() {
               alt="linkedin logo"
             ></img>
           </a>
-          <Link to="/form">
+          <Link to="/form" onClick={setContactFormColor(false)}>
             <img
               className="links-container__link-1__img3"
               src={mail}
@@ -258,5 +260,5 @@ export default function Main() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,21 +1,12 @@
-to scss:
 
-coding X
-emailJSform X
-form X
-heartbeat X
-main X
-morse X
-static X
-tape X
 
-to scss mobile:
+mobile-laptop-desktop:
 
 coding
 emailJSForm
 form
-heartbeat
+heartbeat X
 main
-morse
-static
-tape
+morse X
+static X
+tape X
