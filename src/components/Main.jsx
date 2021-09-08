@@ -224,7 +224,6 @@ export default function Main() {
             >
               <source src={coding_animation} type="video/mp4" />
             </video>
-            <div className="links-container__link-2__animation__coverup"></div>
           </div>
         </Link>
         <div

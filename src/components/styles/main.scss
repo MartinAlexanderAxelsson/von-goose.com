@@ -1,4 +1,5 @@
-$breakpoint1: 600px;
+$breakpoint1: 768px;
+$breakpoint2: 1540px;
 
 @keyframes animateHeight {
   0% {
@@ -36,7 +37,7 @@ $breakpoint1: 600px;
 
 /* ------------------Letters-------------- */
 @mixin letterWidth {
-  width: 30px;
+  width: 6vw;
   @media (min-width: $breakpoint1) {
     width: 50px;
   }
@@ -47,9 +48,10 @@ $breakpoint1: 600px;
   justify-content: space-evenly;
   margin-top: 2vh;
   z-index: 10;
-  @media (max-width: $breakpoint1) {
-    margin-top: 0;
-    justify-content: space-between;
+
+  // display: none;
+  @media (min-width: $breakpoint1) {
+    justify-content: space-evenly;
   }
   &__link-container {
     &__letter1 {
@@ -124,12 +126,14 @@ $breakpoint1: 600px;
 .all-lines-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-self: center;
   height: 0vh;
   z-index: 100;
   margin-top: -15vh;
-
+  @media (min-width: $breakpoint1) {
+    justify-content: center;
+  }
   &__line1-container {
     @include line;
     animation: 5s ease-out 0s 1 animateHeight;
@@ -148,7 +152,10 @@ $breakpoint1: 600px;
   &__line2-container__line,
   &__line3-container__line {
     height: 70vh;
-    /* media query on width of lines on bigger screen */
+
+    @media (min-width: $breakpoint2) {
+      width: 80px;
+    }
   }
 }
 
@@ -159,16 +166,23 @@ $breakpoint1: 600px;
   letter-spacing: 7px;
   font-weight: bold;
   font-size: 15px;
+  color: blue;
   width: fit-content;
   cursor: default;
+  @media (min-width: $breakpoint2) {
+    font-size: 18px;
+  }
 }
 
 .menus-container {
   margin-top: 71vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 
+  @media (min-width: $breakpoint1) {
+    justify-content: center;
+  }
   &__wrapper {
     display: flex;
     justify-content: center;
@@ -176,18 +190,15 @@ $breakpoint1: 600px;
 
     &__menu-1 {
       @include menu;
-      color: blue;
       animation: 3.6s step-end 0s 1 animateVisibility;
     }
     &__menu-2 {
       @include menu;
-      color: blue;
       animation: 5.7s step-end 0s 1 animateVisibility;
       text-decoration: none;
     }
     &__menu-3 {
       @include menu;
-      color: blue;
       animation: 7.8s step-end 0s 1 animateVisibility;
     }
     &__menu-1__hover {
@@ -219,8 +230,11 @@ $breakpoint1: 600px;
 .links-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 
+  @media (min-width: $breakpoint1) {
+    justify-content: center;
+  }
   &__link-1 {
     display: flex;
     flex-direction: row;
@@ -232,13 +246,27 @@ $breakpoint1: 600px;
     &__img2,
     &__img3 {
       width: 58px;
-      padding: 1vw 12px 0px 12px;
+      padding: 4vw 0px 0px 0px;
+      @media (min-width: $breakpoint1) {
+        padding: 0px 12px 0px 12px;
+      }
     }
   }
 
   &__link-1__displayed {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 22vw;
+    height: max-content;
     visibility: visible;
     animation: 3s ease 0s 1 animateOpacity;
+    @media (min-width: $breakpoint1) {
+      flex-direction: row;
+      width: auto;
+      height: auto;
+    }
   }
 
   &__link-2 {
@@ -256,39 +284,48 @@ $breakpoint1: 600px;
         height: 100px;
         z-index: 1;
       }
-      &__coverup {
-        position: absolute;
-        margin-top: -10px;
-        width: 130px;
-        height: 20px;
-        background: white;
-        z-index: 10;
-      }
     }
   }
 
   &__link-2__displayed {
+    width: 22vw;
     visibility: visible;
     animation: 3s ease 0s 1 animateOpacity;
+    @media (min-width: $breakpoint1) {
+      width: auto;
+    }
   }
 
   &__link-3 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background: rgb(67, 15, 163);
     width: 22vw;
     visibility: hidden;
     &__img1,
     &__img2,
     &__img3 {
       width: 58px;
-      padding: 1vw 12px 0px 12px;
+      padding: 4vw 0px 0px 0px;
+      @media (min-width: $breakpoint1) {
+        padding: 0px 12px 0px 12px;
+      }
     }
   }
 
   &__link-3__displayed {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 22vw;
+    height: max-content;
     visibility: visible;
     animation: 3s ease 0s 1 animateOpacity;
+    @media (min-width: $breakpoint1) {
+      flex-direction: row;
+      width: auto;
+      height: auto;
+    }
   }
 }
