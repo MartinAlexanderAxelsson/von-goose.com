@@ -146,27 +146,13 @@ export default function Coding() {
 
   return (
     <>
-      <header className="header-coding">
-        <div>
-          <Link className="header-coding__homelink" to={"/"}>
-            &#60;------
-          </Link>
-        </div>
-        <div className="header-coding__container">
-          <div className="header-coding__container__C">/C/</div>
-          <div className="header-coding__container__O">/O/</div>
-          <div className="header-coding__container__D">/D/</div>
-          <div className="header-coding__container__I">/I/</div>
-          <div className="header-coding__container__N">/N/</div>
-          <div className="header-coding__container__G">/G/</div>
-        </div>
-        <div></div>
-      </header>
       <main className="main-coding">
         <div className="main-coding__links">
           <div
             style={scriptwaveStyle}
             className="main-coding__links__link-container"
+            onTouchStart={() => setScriptwave(true)}
+            onTouchEnd={() => setScriptwave(false)}
             onMouseEnter={() => setScriptwave(true)}
             onMouseLeave={() => setScriptwave(false)}
           >
@@ -276,7 +262,9 @@ export default function Coding() {
           )}
           {joyride === true ? (
             <div className="main-coding__display-container__joyride">
-              IS A WEBSITE MADE FOR PODCAST JOYRIDE
+              <p className="main-coding__display-container__joyride__p">
+                IS A WEBSITE MADE FOR PODCAST JOYRIDE, MORE INFO COMING SOON
+              </p>
             </div>
           ) : (
             <div></div>

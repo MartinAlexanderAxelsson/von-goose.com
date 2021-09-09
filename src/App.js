@@ -8,6 +8,8 @@ import Message from "./components/Morse";
 import Static from "./components/Static";
 import Coding from "./components/Coding";
 import { Context } from "./context/Context";
+import CodingMobile from "./components/CodingMobile";
+import CodingPage from "./components/CodingPage";
 
 function App() {
   const [contactFormColor, setContactFormColor] = useState(false);
@@ -21,7 +23,8 @@ function App() {
         }}
       >
         <Switch>
-          <Route path="/coding" component={Coding} />
+          {/* <Route path="/coding" component={Coding} /> */}
+          <Route path="/coding" component={CodingPage} />
           <Route path="/static" component={Static} />
           <Route path="/message" component={Message} />
           <Route path="/tape" component={Tape} />
