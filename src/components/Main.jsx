@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import line from "../images/line.jpg";
 import spotify from "../images/Spotify_Icon_RGB_Green.png";
@@ -24,6 +24,24 @@ export default function Main() {
   const [about, setAbout] = useState(false);
   const [coding, setCoding] = useState(false);
   const [music, setMusic] = useState(false);
+
+  const [disableAnimations, setDisableAnimations] = useState("");
+
+  const pageVisited = () => {
+    if (!sessionStorage.getItem("hasVisited")) {
+      setTimeout(function () {
+        sessionStorage.setItem("hasVisited", true);
+      }, 3000);
+    }
+
+    if (sessionStorage.getItem("hasVisited")) {
+      setDisableAnimations("none");
+    }
+  };
+
+  useEffect(() => {
+    pageVisited();
+  }, []);
 
   return (
     <div>
@@ -106,21 +124,30 @@ export default function Main() {
       </div>
 
       <div className="all-lines-container">
-        <div className="all-lines-container__line1-container">
+        <div
+          className="all-lines-container__line1-container"
+          style={{ animation: disableAnimations }}
+        >
           <img
             className="all-lines-container__line1-container__line"
             src={line}
             alt=""
           ></img>
         </div>
-        <div className="all-lines-container__line2-container">
+        <div
+          className="all-lines-container__line2-container"
+          style={{ animation: disableAnimations }}
+        >
           <img
             className="all-lines-container__line2-container__line"
             src={line}
             alt=""
           ></img>
         </div>
-        <div className="all-lines-container__line3-container">
+        <div
+          className="all-lines-container__line3-container"
+          style={{ animation: disableAnimations }}
+        >
           <img
             className="all-lines-container__line3-container__line"
             src={line}
@@ -132,6 +159,7 @@ export default function Main() {
       <div className="menus-container">
         <div className="menus-container__wrapper">
           <div
+            style={{ animation: disableAnimations }}
             onMouseOver={() => setAbout(true)}
             onMouseLeave={() => setAbout(false)}
             className={
@@ -147,6 +175,7 @@ export default function Main() {
         <div className="menus-container__wrapper">
           <Link
             to={"/coding"}
+            style={{ animation: disableAnimations }}
             onMouseOver={() => setCoding(true)}
             onMouseLeave={() => setCoding(false)}
             className={
@@ -160,6 +189,7 @@ export default function Main() {
         </div>
         <div className="menus-container__wrapper">
           <div
+            style={{ animation: disableAnimations }}
             onMouseOver={() => setMusic(true)}
             onMouseLeave={() => setMusic(false)}
             className={

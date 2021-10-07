@@ -26,7 +26,7 @@ $CODING-color: rgb(255, 255, 255);
       justify-content: center;
       flex: 1;
       transition: 0s;
-
+      z-index: 100;
       &__a {
         color: $main-color;
         font-family: "Rubik", sans-serif;
@@ -39,6 +39,7 @@ $CODING-color: rgb(255, 255, 255);
     }
     &__link-container:nth-child(1) {
       background: rgba(29, 29, 29, 0.2);
+
       @media (min-width: 768px) {
         background: unset;
       }
@@ -80,23 +81,27 @@ $CODING-color: rgb(255, 255, 255);
       flex-direction: column;
       align-items: center;
       background: $main-color;
+
       min-height: fit-content;
+
       width: 100vw;
       transition: 0.5s;
+      padding-top: 20px;
       @media (min-width: 768px) {
         background: unset;
+        margin-top: 0px;
       }
 
       &__p-container {
         display: flex;
         flex-direction: column;
         width: 80vw;
-        padding-bottom: 10px;
+        padding-bottom: 1px;
 
         &__p1,
         &__p2,
         &__p3 {
-          margin: 10px;
+          margin: 5px;
 
           font-family: "Rubik", sans-serif;
           letter-spacing: 2px;
@@ -131,7 +136,7 @@ $CODING-color: rgb(255, 255, 255);
       &__video-container {
         display: flex;
         justify-content: center;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
 
         &__video {
           border-radius: 1.8vw;
@@ -172,6 +177,7 @@ $CODING-color: rgb(255, 255, 255);
       width: 100vw;
       transition: 0.5s;
       padding-bottom: 20px;
+      padding-top: 20px;
       &__p {
         width: 85vw;
         font-family: "Rubik", sans-serif;

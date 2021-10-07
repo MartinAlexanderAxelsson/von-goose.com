@@ -148,11 +148,15 @@ $breakpoint2: 1540px;
     @include line;
     animation: 11s ease-out 0s 1 animateHeight;
   }
+
   &__line1-container__line,
   &__line2-container__line,
   &__line3-container__line {
-    height: 70vh;
-
+    height: 60vh;
+    width: 50px;
+    @media (min-width: $breakpoint1) {
+      height: 70vh;
+    }
     @media (min-width: $breakpoint2) {
       width: 80px;
     }
@@ -175,13 +179,14 @@ $breakpoint2: 1540px;
 }
 
 .menus-container {
-  margin-top: 71vh;
+  margin-top: 61vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 
   @media (min-width: $breakpoint1) {
     justify-content: center;
+    margin-top: 71vh;
   }
   &__wrapper {
     display: flex;
@@ -201,6 +206,7 @@ $breakpoint2: 1540px;
       @include menu;
       animation: 7.8s step-end 0s 1 animateVisibility;
     }
+
     &__menu-1__hover {
       @include menu;
       color: rgba(0, 0, 0, 0.349);
