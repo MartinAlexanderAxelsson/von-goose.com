@@ -1,49 +1,49 @@
-import React, { useRef, useState, useContext } from "react";
-import emailjs from "emailjs-com";
-import { Context } from "../context/Context";
+import React, { useRef, useState, useContext } from "react"
+import emailjs from "emailjs-com"
+import { Context } from "../context/Context"
 // import "./styles/emailJSForm.scss";
-import "./styles/emailJSForm.css";
+import "./styles/emailJSForm.css"
 
 export default function EmailJSForm() {
-  const { contactFormColor } = useContext(Context);
-  const ref = useRef();
+  const { contactFormColor } = useContext(Context)
+  const ref = useRef()
 
-  const [input, setInput] = useState();
-  const [text, setText] = useState("Submit");
+  const [input, setInput] = useState()
+  const [text, setText] = useState("Submit")
 
-  const service = process.env.REACT_APP_SERVICE;
-  const template = process.env.REACT_APP_TEMPLATE;
-  const user = process.env.REACT_APP_USER;
+  const service = process.env.REACT_APP_SERVICE
+  const template = process.env.REACT_APP_TEMPLATE
+  const user = process.env.REACT_APP_USER
 
-  const root = document.documentElement;
+  const root = document.documentElement
   root.style.setProperty(
     "--main-color",
 
     contactFormColor ? "rgb(29, 29, 29)" : "blue"
-  );
+  )
   root.style.setProperty(
     "--buttonBorder-color",
     contactFormColor ? "rgb(29, 29, 29, 0.315)" : "rgba(0, 0, 255, 0.315)"
-  );
+  )
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     emailjs.sendForm(service, template, e.target, user).then(
       (result) => {
-        console.log(result.text);
+        console.log(result.text)
       },
       (error) => {
-        console.log(error.text);
+        console.log(error.text)
       }
-    );
-    e.target.reset();
+    )
+    e.target.reset()
   }
 
   function auto_height(e) {
-    const target = e.target;
-    ref.current.style.height = "1vw";
-    ref.current.style.height = `${target.scrollHeight}px`;
+    const target = e.target
+    ref.current.style.height = "1vw"
+    ref.current.style.height = `${target.scrollHeight}px`
   }
 
   return (
@@ -89,5 +89,5 @@ export default function EmailJSForm() {
         </form>
       </div>
     </div>
-  );
+  )
 }

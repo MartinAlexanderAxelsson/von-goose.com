@@ -1,47 +1,48 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import line from "../images/line.jpg";
-import spotify from "../images/Spotify_Icon_RGB_Green.png";
-import sc from "../images/SoundCloud.png";
-import yt from "../images/YT_logo.png";
-import github from "../images/git.png";
-import linkedin from "../images/linked.png";
-import mail from "../images/mail.png";
-import v from "../images/v.png";
-import o1 from "../images/1o.png";
-import n from "../images/n.png";
-import g from "../images/g.png";
-import o2 from "../images/2o.png";
-import o3 from "../images/3o.png";
-import s from "../images/s.png";
-import e from "../images/e.png";
-import coding_animation from "../video/Coding_animation.mp4";
-import { Context } from "../context/Context";
-import "./styles/main.scss";
+import React, { useState, useContext, useEffect, useRef } from "react"
+import { Link } from "react-router-dom"
+import line from "../images/line.jpg"
+import spotify from "../images/Spotify_Icon_RGB_Green.png"
+import sc from "../images/SoundCloud.png"
+import yt from "../images/YT_logo.png"
+import github from "../images/git.png"
+import linkedin from "../images/linked.png"
+import mail from "../images/mail.png"
+import tape from "../images/tape-icon.png"
+import v from "../images/v.png"
+import o1 from "../images/1o.png"
+import n from "../images/n.png"
+import g from "../images/g.png"
+import o2 from "../images/2o.png"
+import o3 from "../images/3o.png"
+import s from "../images/s.png"
+import e from "../images/e.png"
+import coding_animation from "../video/Coding_animation.mp4"
+import { Context } from "../context/Context"
+import "./styles/main.scss"
 
 export default function Main() {
-  const { setContactFormColor } = useContext(Context);
-  const [about, setAbout] = useState(false);
-  const [coding, setCoding] = useState(false);
-  const [music, setMusic] = useState(false);
+  const { setContactFormColor } = useContext(Context)
+  const [about, setAbout] = useState(false)
+  const [coding, setCoding] = useState(false)
+  const [music, setMusic] = useState(false)
 
-  const [disableAnimations, setDisableAnimations] = useState("");
+  const [disableAnimations, setDisableAnimations] = useState("")
 
   const pageVisited = () => {
     if (!sessionStorage.getItem("hasVisited")) {
       setTimeout(function () {
-        sessionStorage.setItem("hasVisited", true);
-      }, 3000);
+        sessionStorage.setItem("hasVisited", true)
+      }, 3000)
     }
 
     if (sessionStorage.getItem("hasVisited")) {
-      setDisableAnimations("none");
+      setDisableAnimations("none")
     }
-  };
+  }
 
   useEffect(() => {
-    pageVisited();
-  }, []);
+    pageVisited()
+  }, [])
 
   return (
     <div>
@@ -272,10 +273,11 @@ export default function Main() {
               alt="spotify logo"
             ></img>
           </a>
-          <a href="https://soundcloud.com/von_goose">
+          {/* <a href="https://soundcloud.com/von_goose"> */}
+          <a href="https://vongoose.lol">
             <img
               className="links-container__link-3__img2"
-              src={sc}
+              src={tape}
               alt="soundcloud logo"
             ></img>
           </a>
@@ -289,5 +291,5 @@ export default function Main() {
         </div>
       </div>
     </div>
-  );
+  )
 }
