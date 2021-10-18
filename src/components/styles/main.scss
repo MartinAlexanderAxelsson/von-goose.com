@@ -152,7 +152,7 @@ $breakpoint2: 1540px;
   &__line1-container__line,
   &__line2-container__line,
   &__line3-container__line {
-    height: 60vh;
+    height: 55vh;
     width: 50px;
     @media (min-width: $breakpoint1) {
       height: 70vh;
@@ -180,7 +180,7 @@ $breakpoint2: 1540px;
 }
 
 .menus-container {
-  margin-top: 61vh;
+  margin-top: 56vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -196,16 +196,25 @@ $breakpoint2: 1540px;
 
     &__menu-1 {
       @include menu;
-      animation: 3.6s step-end 0s 1 animateVisibility;
+      animation: 2.6s step-end 0s 1 animateVisibility;
+      @media (min-width: $breakpoint1) {
+        animation: 3.6s step-end 0s 1 animateVisibility;
+      }
     }
     &__menu-2 {
       @include menu;
-      animation: 5.7s step-end 0s 1 animateVisibility;
+      animation: 4.1s step-end 0s 1 animateVisibility;
       text-decoration: none;
+      @media (min-width: $breakpoint1) {
+        animation: 5.7s step-end 0s 1 animateVisibility;
+      }
     }
     &__menu-3 {
       @include menu;
-      animation: 7.8s step-end 0s 1 animateVisibility;
+      animation: 5.6s step-end 0s 1 animateVisibility;
+      @media (min-width: $breakpoint1) {
+        animation: 7.8s step-end 0s 1 animateVisibility;
+      }
     }
 
     &__menu-1__hover {
