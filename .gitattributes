@@ -1,0 +1,2 @@
+Scriptwave_video.mp3 filter=lfs diff=lfs merge=lfs -text
+src/video/** filter=lfs diff=lfs merge=lfs -text
