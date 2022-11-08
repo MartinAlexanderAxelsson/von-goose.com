@@ -6,9 +6,9 @@ import Heartbeat from "./components/Heartbeat";
 import Tape from "./components/Tape";
 import Message from "./components/Morse";
 import Static from "./components/Static";
-import Coding from "./components/Coding";
+
 import { Context } from "./context/Context";
-import CodingMobile from "./components/CodingMobile";
+
 import CodingPage from "./components/CodingPage";
 
 function App() {

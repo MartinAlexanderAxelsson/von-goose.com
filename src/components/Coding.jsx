@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, createRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import scriptwave_video from "../video/Scriptwave_video.mp4";
 import scriptbeat_video from "../video/Scriptbeat_video.mp4";
@@ -35,11 +35,16 @@ const VolOffIcon = styled(VolumeOff)`
 `;
 
 export default function Coding() {
+  const style = {
+    scriptwave: { background: "", transition: "" },
+    joyride: { background: "", transition: "" },
+    scriptbeat: { background: "", transition: "" },
+    addProject: { background: "", transition: "" },
+  };
+  const sections = ["scriptwave", "joyride", "scriptbeat", "addProject"];
+  const [section, setSection] = useState();
+  const [sectionStyle, setSectionStyle] = useState(style);
   const { setContactFormColor } = useContext(Context);
-  const [scriptwave, setScriptwave] = useState(false);
-  const [joyride, setJoyride] = useState(false);
-  const [scriptbeat, setScriptbeat] = useState(false);
-  const [addProject, setAddProject] = useState(false);
   const [muted, setMuted] = useState(true);
 
   const displaySoundIcon = {
@@ -50,217 +55,133 @@ export default function Coding() {
     visibility: "hidden",
   };
 
-  const [joyrideStyle, setJoyrideStyle] = useState();
-  const [scriptwaveStyle, setScriptwaveStyle] = useState();
-  const [scriptbeatStyle, setScriptbeatStyle] = useState();
-  const [addprojectStyle, setAddprojectStyle] = useState();
+  const handleOnMouseEnter = section => {
+    setSection(section);
+    const nonActiveSection = sections.filter(e => e !== section);
 
-  const handleStyleChange = () => {
-    if (scriptwave || addProject || scriptbeat || joyride) {
-      if (scriptwave) {
-        setScriptwaveStyle({
-          background: "rgb(29, 29, 29)",
-          transition: "0.5s",
-        });
-        setJoyrideStyle({
-          background: "rgba(29, 29, 29, 0.200)",
-          transition: "0.5s",
-        });
-        setScriptbeatStyle({
-          background: "rgba(29, 29, 29, 0.100)",
-          transition: "0.5s",
-        });
-        setAddprojectStyle({
-          background: "rgba(29, 29, 29, 0.000)",
-          transition: "0.5s",
-        });
-      }
-
-      if (joyride) {
-        setJoyrideStyle({
-          background: "rgb(29, 29, 29)",
-          transition: "0.5s",
-        });
-        setScriptwaveStyle({
-          background: "rgba(29, 29, 29, 0.200)",
-          transition: "0.5s",
-        });
-        setScriptbeatStyle({
-          background: "rgba(29, 29, 29, 0.200)",
-          transition: "0.5s",
-        });
-        setAddprojectStyle({
-          background: "rgba(29, 29, 29, 0.100)",
-          transition: "0.5s",
-        });
-      }
-
-      if (scriptbeat) {
-        setScriptbeatStyle({
-          background: "rgb(29, 29, 29)",
-          transition: "0.5s",
-        });
-        setJoyrideStyle({
-          background: "rgba(29, 29, 29, 0.200)",
-          transition: "0.5s",
-        });
-        setScriptwaveStyle({
-          background: "rgba(29, 29, 29, 0.100)",
-          transition: "0.5s",
-        });
-        setAddprojectStyle({
-          background: "rgba(29, 29, 29, 0.200)",
-          transition: "0.5s",
-        });
-      }
-
-      if (addProject) {
-        setAddprojectStyle({
-          background: "rgb(29, 29, 29)",
-          transition: "0.5s",
-        });
-        setJoyrideStyle({
-          background: "rgba(29, 29, 29, 0.100)",
-          transition: "0.5s",
-        });
-        setScriptbeatStyle({
-          background: "rgba(29, 29, 29, 0.200)",
-          transition: "0.5s",
-        });
-        setScriptwaveStyle({
-          background: "rgba(29, 29, 29, 0.000)",
-          transition: "0.5s",
-        });
-      }
-    } else {
-      setScriptwaveStyle(null);
-      setJoyrideStyle(null);
-      setScriptbeatStyle(null);
-      setAddprojectStyle(null);
-    }
+    setSectionStyle(p => ({
+      ...p,
+      [section]: { ...p.background, background: "rgb(29, 29, 29)", transition: "0.5s" },
+      [nonActiveSection[0]]: { ...p.background, background: "rgb(29, 29, 29, 0.200)", transition: "0.5s" },
+      [nonActiveSection[1]]: { ...p.background, background: "rgb(29, 29, 29, 0.100)", transition: "0.5s" },
+      [nonActiveSection[2]]: { ...p.background, background: "rgb(29, 29, 29, 0.000)", transition: "0.5s" },
+    }));
+  };
+  const handleOnMouseLeave = () => {
+    setSection(null);
+    setSectionStyle(style);
   };
 
-  useEffect(() => {
-    handleStyleChange();
-  }, [scriptwave, joyride, addProject, scriptbeat]);
+  useEffect(() => {}, [section]);
 
   return (
     <>
       <main className="main-coding">
         <div className="main-coding__links">
           <div
-            style={scriptwaveStyle}
+            style={sectionStyle.scriptwave}
             className="main-coding__links__link-container"
-            onTouchStart={() => setScriptwave(true)}
-            onTouchEnd={() => setScriptwave(false)}
-            onMouseEnter={() => setScriptwave(true)}
-            onMouseLeave={() => setScriptwave(false)}
+            // onTouchStart={() => setSection("scriptwave")}
+            // onTouchEnd={() => setSection(null)}
+            onMouseEnter={() => handleOnMouseEnter("scriptwave")}
+            onMouseLeave={() => handleOnMouseLeave()}
           >
-            <a
-              className="main-coding__links__link-container__a"
-              href="https://von-goose.com/scriptwave"
-            >
+            <a className="main-coding__links__link-container__a" href="https://von-goose.com/scriptwave">
               SCRIPTWAVE
             </a>
 
             {muted === false ? (
               <VolOnIcon
-                style={scriptwave ? displaySoundIcon : hideSoundIcon}
+                style={section === "scriptwave" ? displaySoundIcon : hideSoundIcon}
                 onClick={() => setMuted(muted ? false : true)}
               />
             ) : (
               <VolOffIcon
-                style={scriptwave ? displaySoundIcon : hideSoundIcon}
+                style={section === "scriptwave" ? displaySoundIcon : hideSoundIcon}
                 onClick={() => setMuted(muted ? false : true)}
               />
             )}
           </div>
           <div
-            style={joyrideStyle}
+            style={sectionStyle.joyride}
+            onMouseEnter={() => handleOnMouseEnter("joyride")}
+            onMouseLeave={() => handleOnMouseLeave()}
             className="main-coding__links__link-container"
-            onMouseEnter={() => setJoyride(true)}
-            onMouseLeave={() => setJoyride(false)}
           >
-            <a
-              className="main-coding__links__link-container__a"
-              href="https://joyride.digital"
-            >
+            <a className="main-coding__links__link-container__a" href="https://joyride.digital">
               JOYRIDE.DIGITAL
             </a>
           </div>
           <div
-            style={scriptbeatStyle}
+            style={sectionStyle.scriptbeat}
+            onMouseEnter={() => handleOnMouseEnter("scriptbeat")}
+            onMouseLeave={() => handleOnMouseLeave()}
             className="main-coding__links__link-container"
-            onMouseEnter={() => setScriptbeat(true)}
-            onMouseLeave={() => setScriptbeat(false)}
           >
-            <a
-              className="main-coding__links__link-container__a"
-              href="https://von-goose.com/scriptbeat"
-            >
+            <a className="main-coding__links__link-container__a" href="https://von-goose.com/scriptbeat">
               SCRIPTBEAT
             </a>
 
             {muted === false ? (
               <VolOnIcon
-                style={scriptbeat ? displaySoundIcon : hideSoundIcon}
+                style={section === "scriptbeat" ? displaySoundIcon : hideSoundIcon}
                 onClick={() => setMuted(muted ? false : true)}
               />
             ) : (
               <VolOffIcon
-                style={scriptbeat ? displaySoundIcon : hideSoundIcon}
+                style={section === "scriptbeat" ? displaySoundIcon : hideSoundIcon}
                 onClick={() => setMuted(muted ? false : true)}
               />
             )}
           </div>
           <div
-            style={addprojectStyle}
-            onMouseEnter={() => setAddProject(true)}
-            onMouseLeave={() => setAddProject(false)}
+            style={sectionStyle.addProject}
+            onMouseEnter={() => handleOnMouseEnter("addProject")}
+            onMouseLeave={() => handleOnMouseLeave()}
             className="main-coding__links__link-container"
           >
-            <Link
-              onClick={setContactFormColor(true)}
-              className="main-coding__links__link-container__a"
-              to={"/form"}
-            >
+            <Link onClick={setContactFormColor(true)} className="main-coding__links__link-container__a" to={"/form"}>
               ADD PROJECT +
             </Link>
           </div>
         </div>
 
         <div className="main-coding__display-container">
-          {scriptwave === true ? (
+          {section === "scriptwave" ? (
             <div className="main-coding__display-container__scriptwave">
               <div className="main-coding__display-container__scriptwave__p-container">
                 <p className="main-coding__display-container__scriptwave__p-container__p1">
-                  IS A MIDI COMPATIBLE SYNTH MADE WITH REACT AND THE WEB AUDIO
-                  API
+                  IS A MIDI COMPATIBLE SYNTH MADE WITH REACT AND THE WEB AUDIO API
                 </p>
                 <p className="main-coding__display-container__scriptwave__p-container__p2">
-                  IT IS PLAYABLE VIA YOUR COMPUTER KEYBOARD OR A MIDI DEVICE
-                  CONNECTED THROUGH YOUR USB PORT
+                  IT IS PLAYABLE VIA YOUR COMPUTER KEYBOARD OR A MIDI DEVICE CONNECTED THROUGH YOUR USB PORT
                 </p>
                 <p className="main-coding__display-container__scriptwave__p-container__p3">
-                  MOBILE VIEW IS CURRENTLY IN DEVELOPMENT<span></span>
+                  MOBILE VIEW IS CURRENTLY IN DEVELOPMENT<span className="dots"></span>
                 </p>
               </div>
               <div className="main-coding__display-container__scriptwave__video-container">
-                <video
-                  className="main-coding__display-container__scriptwave__video-container__video"
-                  autoPlay
-                  muted={muted}
-                  loop
-                >
-                  <source src={scriptwave_video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {scriptwave_video ? (
+                  <video
+                    className="main-coding__display-container__scriptwave__video-container__video"
+                    autoPlay
+                    muted={muted}
+                    loop
+                    src={scriptwave_video}
+                    type="video/mp4"
+                  ></video>
+                ) : (
+                  <div className="main-coding__display-container__scriptwave__video-container__videoLoading">
+                    <p>Video loading</p>
+                    <span className="videoLoading-animation"></span>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
             <div></div>
           )}
-          {joyride === true ? (
+          {section === "joyride" ? (
             <div className="main-coding__display-container__joyride">
               <p className="main-coding__display-container__joyride__p">
                 IS A WEBSITE MADE FOR PODCAST JOYRIDE, MORE INFO COMING SOON
@@ -269,35 +190,37 @@ export default function Coding() {
           ) : (
             <div></div>
           )}
-          {scriptbeat === true ? (
+          {section === "scriptbeat" ? (
             <div className="main-coding__display-container__scriptbeat">
               <p className="main-coding__display-container__scriptbeat__p">
-                IS AN INTERACTIVE BROWSERBASED DRUMMACHINE AND SEQUENCER, BUILT
-                WITH JAVASCRIPT AND THE WEB AUDIO API
+                IS AN INTERACTIVE BROWSERBASED DRUMMACHINE AND SEQUENCER, BUILT WITH JAVASCRIPT AND THE WEB AUDIO API
               </p>
 
               <div className="main-coding__display-container__scriptbeat__video-container">
-                <video
-                  className="main-coding__display-container__scriptbeat__video-container__video"
-                  autoPlay
-                  muted={muted}
-                  loop
-                >
-                  <source src={scriptbeat_video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {scriptbeat_video ? (
+                  <video
+                    className="main-coding__display-container__scriptbeat__video-container__video"
+                    autoPlay
+                    muted={muted}
+                    loop
+                  >
+                    <source src={scriptbeat_video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <div className="main-coding__display-container__scriptwave__video-container__videoLoading">
+                    <p>Video loading</p>
+                    <span className="videoLoading-animation"></span>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
             <div></div>
           )}
-          {addProject === true ? (
+          {section === "addProject" ? (
             <div className="main-coding__display-container__addproject">
-              <img
-                className="main-coding__display-container__addproject__giffy"
-                src={pixelman}
-                alt=""
-              ></img>
+              <img className="main-coding__display-container__addproject__giffy" src={pixelman} alt=""></img>
             </div>
           ) : (
             <div></div>
