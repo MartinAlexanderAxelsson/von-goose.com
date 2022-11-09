@@ -86,7 +86,7 @@ export default function Coding() {
             onMouseEnter={() => handleOnMouseEnter("scriptwave")}
             onMouseLeave={() => handleOnMouseLeave()}
           >
-            <a className="main-coding__links__link-container__a" href="https://von-goose.com/scriptwave">
+            <a className="main-coding__links__link-container__a" href="https://www.scriptwave.von-goose.com">
               SCRIPTWAVE
             </a>
 
@@ -118,7 +118,7 @@ export default function Coding() {
             onMouseLeave={() => handleOnMouseLeave()}
             className="main-coding__links__link-container"
           >
-            <a className="main-coding__links__link-container__a" href="https://von-goose.com/scriptbeat">
+            <a className="main-coding__links__link-container__a" href="https://www.scriptbeat.von-goose.com">
               SCRIPTBEAT
             </a>
 
@@ -140,7 +140,7 @@ export default function Coding() {
             onMouseLeave={() => handleOnMouseLeave()}
             className="main-coding__links__link-container"
           >
-            <Link onClick={setContactFormColor(true)} className="main-coding__links__link-container__a" to={"/form"}>
+            <Link onClick={setContactFormColor(true)} className="main-coding__links__link-container__a" to={"/contact"}>
               ADD PROJECT +
             </Link>
           </div>

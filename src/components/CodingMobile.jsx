@@ -96,7 +96,7 @@ export default function CodingMobile() {
             <a
               style={scriptwave ? scriptwaveStyle : null}
               className="main-coding-mobile__links__link-container__a"
-              href="https://von-goose.com/scriptwave"
+              href="https://www.scriptwave.von-goose.com"
             >
               SCRIPTWAVE
             </a>
@@ -118,12 +118,10 @@ export default function CodingMobile() {
             <div className="main-coding-mobile__display-container__scriptwave">
               <div className="main-coding-mobile__display-container__scriptwave__p-container">
                 <p className="main-coding-mobile__display-container__scriptwave__p-container__p1">
-                  IS A MIDI COMPATIBLE SYNTH MADE WITH REACT AND THE WEB AUDIO
-                  API
+                  IS A MIDI COMPATIBLE SYNTH MADE WITH REACT AND THE WEB AUDIO API
                 </p>
                 <p className="main-coding-mobile__display-container__scriptwave__p-container__p2">
-                  IT IS PLAYABLE VIA YOUR COMPUTER KEYBOARD OR A MIDI DEVICE
-                  CONNECTED THROUGH YOUR USB PORT
+                  IT IS PLAYABLE VIA YOUR COMPUTER KEYBOARD OR A MIDI DEVICE CONNECTED THROUGH YOUR USB PORT
                 </p>
                 <p className="main-coding-mobile__display-container__scriptwave__p-container__p3">
                   MOBILE VIEW IS CURRENTLY IN DEVELOPMENT<span></span>
@@ -177,7 +175,7 @@ export default function CodingMobile() {
             <a
               style={scriptbeat ? scriptbeatStyle : null}
               className="main-coding-mobile__links__link-container__a"
-              href="https://von-goose.com/scriptbeat"
+              href="https://www.scriptbeat.von-goose.com"
             >
               SCRIPTBEAT
             </a>
@@ -198,8 +196,7 @@ export default function CodingMobile() {
             {scriptbeat === true ? (
               <div className="main-coding-mobile__display-container__scriptbeat">
                 <p className="main-coding-mobile__display-container__scriptbeat__p">
-                  IS AN INTERACTIVE BROWSERBASED DRUMMACHINE AND SEQUENCER,
-                  BUILT WITH JAVASCRIPT AND THE WEB AUDIO API
+                  IS AN INTERACTIVE BROWSERBASED DRUMMACHINE AND SEQUENCER, BUILT WITH JAVASCRIPT AND THE WEB AUDIO API
                 </p>
 
                 <div className="main-coding-mobile__display-container__scriptbeat__video-container">
@@ -229,7 +226,7 @@ export default function CodingMobile() {
               style={addProject ? addprojectStyle : null}
               onClick={setContactFormColor(true)}
               className="main-coding-mobile__links__link-container__a"
-              to={"/form"}
+              to={"/contact"}
             >
               ADD PROJECT +
             </Link>
@@ -237,11 +234,7 @@ export default function CodingMobile() {
           <div>
             {addProject === true ? (
               <div className="main-coding-mobile__display-container__addproject">
-                <img
-                  className="main-coding-mobile__display-container__addproject__giffy"
-                  src={pixelman}
-                  alt=""
-                ></img>
+                <img className="main-coding-mobile__display-container__addproject__giffy" src={pixelman} alt=""></img>
               </div>
             ) : (
               <div></div>
