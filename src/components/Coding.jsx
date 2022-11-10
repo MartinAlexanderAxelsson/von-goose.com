@@ -86,7 +86,7 @@ export default function Coding() {
             onMouseEnter={() => handleOnMouseEnter("scriptwave")}
             onMouseLeave={() => handleOnMouseLeave()}
           >
-            <a className="main-coding__links__link-container__a" href="https://www.scriptwave.von-goose.com">
+            <a className="main-coding__links__link-container__a" href="https://scriptwave.von-goose.com">
               SCRIPTWAVE
             </a>
 
@@ -118,7 +118,7 @@ export default function Coding() {
             onMouseLeave={() => handleOnMouseLeave()}
             className="main-coding__links__link-container"
           >
-            <a className="main-coding__links__link-container__a" href="https://www.scriptbeat.von-goose.com">
+            <a className="main-coding__links__link-container__a" href="https://scriptbeat.von-goose.com">
               SCRIPTBEAT
             </a>
 

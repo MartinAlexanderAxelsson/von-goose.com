@@ -10,11 +10,10 @@ import "./styles/codingMobile.scss";
 
 const VolOnIcon = styled(VolumeUp)`
   color: white;
-  width: 20px;
+  width: 30px;
   height: auto;
   cursor: pointer;
-  margin-bottom: -20px;
-  margin-top: 10px;
+  margin-left: 30px;
   transition: 0.2s;
   :hover {
     color: rgb(104, 104, 104);
@@ -23,11 +22,10 @@ const VolOnIcon = styled(VolumeUp)`
 
 const VolOffIcon = styled(VolumeOff)`
   color: white;
-  width: 20px;
+  width: 30px;
   height: auto;
   cursor: pointer;
-  margin-bottom: -20px;
-  margin-top: 10px;
+  margin-left: 30px;
   transition: 0.2s;
   :hover {
     color: rgb(104, 104, 104);
@@ -41,13 +39,14 @@ export default function CodingMobile() {
   const [scriptbeat, setScriptbeat] = useState(false);
   const [addProject, setAddProject] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const displaySoundIcon = {
-    visibility: "unset",
+    display: "unset",
   };
 
   const hideSoundIcon = {
-    visibility: "hidden",
+    display: "none",
   };
   const style = {
     background: "rgb(29, 29, 29)",
@@ -86,20 +85,16 @@ export default function CodingMobile() {
 
   return (
     <>
-      <main className="main-coding-mobile">
-        <div className="main-coding-mobile__links">
-          <div
-            style={scriptwave ? scriptwaveStyle : null}
-            className="main-coding-mobile__links__link-container"
-            onClick={() => scriptwaveClick()}
-          >
-            <a
+      <main className="coding-mobile">
+        <div className="coding-mobile__sections">
+          <div style={scriptwave ? scriptwaveStyle : null} className="coding-mobile__sections__section-container">
+            <p
+              onClick={() => scriptwaveClick()}
               style={scriptwave ? scriptwaveStyle : null}
-              className="main-coding-mobile__links__link-container__a"
-              href="https://www.scriptwave.von-goose.com"
+              className="coding-mobile__sections__section-container__text"
             >
               SCRIPTWAVE
-            </a>
+            </p>
 
             {muted === false ? (
               <VolOnIcon
@@ -115,70 +110,83 @@ export default function CodingMobile() {
           </div>
 
           {scriptwave === true ? (
-            <div className="main-coding-mobile__display-container__scriptwave">
-              <div className="main-coding-mobile__display-container__scriptwave__p-container">
-                <p className="main-coding-mobile__display-container__scriptwave__p-container__p1">
+            <div className="coding-mobile__display__scriptwave">
+              <div className="coding-mobile__display__scriptwave__text">
+                <p className="coding-mobile__display__scriptwave__text__p1">
                   IS A MIDI COMPATIBLE SYNTH MADE WITH REACT AND THE WEB AUDIO API
                 </p>
-                <p className="main-coding-mobile__display-container__scriptwave__p-container__p2">
+                <p className="coding-mobile__display__scriptwave__text__p2">
                   IT IS PLAYABLE VIA YOUR COMPUTER KEYBOARD OR A MIDI DEVICE CONNECTED THROUGH YOUR USB PORT
                 </p>
-                <p className="main-coding-mobile__display-container__scriptwave__p-container__p3">
-                  MOBILE VIEW IS CURRENTLY IN DEVELOPMENT<span></span>
+                <p className="coding-mobile__display__scriptwave__text__p3">
+                  MOBILE VIEW IS CURRENTLY IN DEVELOPMENT<span className="dots"></span>
                 </p>
               </div>
-              <div className="main-coding-mobile__display-container__scriptwave__video-container">
+              <div className="coding-mobile__display__scriptwave__video-container">
                 <video
-                  className="main-coding-mobile__display-container__scriptwave__video-container__video"
+                  className="coding-mobile__display__scriptwave__video-container__video"
                   autoPlay
                   muted={muted}
                   loop
+                  onLoadStart={() => setIsLoading(false)}
                 >
                   <source src={scriptwave_video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+                {isLoading && (
+                  <div className="coding-mobile__display__scriptwave__video-container__videoLoading">
+                    <p>Video loading</p>
+                    <span className="videoLoading-animation"></span>
+                  </div>
+                )}
+              </div>
+              <div className="coding-mobile__display__scriptwave__link-container">
+                <a href="https://scriptwave.von-goose.com" className="coding-mobile__display__link-container__link">
+                  SCRIPTWAVE----&#62;
+                </a>
+              </div>
+              <div onClick={() => scriptwaveClick()} className="coding-mobile__display__arrow">
+                ^
               </div>
             </div>
           ) : (
             <div></div>
           )}
-          <div
-            style={joyride ? joyrideStyle : null}
-            className="main-coding-mobile__links__link-container"
-            onClick={() => joyrideClick()}
-            onMouseLeave={() => setJoyride(false)}
-          >
-            <a
+          <div style={joyride ? joyrideStyle : null} className="coding-mobile__sections__section-container">
+            <p
+              onClick={() => joyrideClick()}
               style={joyride ? joyrideStyle : null}
-              className="main-coding-mobile__links__link-container__a"
-              href="https://joyride.digital"
+              className="coding-mobile__sections__section-container__text"
             >
               JOYRIDE.DIGITAL
-            </a>
+            </p>
           </div>
 
           {joyride === true ? (
-            <div className="main-coding-mobile__display-container__joyride">
-              <p className="main-coding-mobile__display-container__joyride__p">
+            <div className="coding-mobile__display__joyride">
+              <p className="coding-mobile__display__joyride__p">
                 IS A WEBSITE MADE FOR PODCAST JOYRIDE, MORE INFO COMING SOON
               </p>
+              <div className="coding-mobile__display__link-container">
+                <a href="https://joyride.digital" className="coding-mobile__display__link-container__link">
+                  JOYRIDE----&#62;
+                </a>
+              </div>
+              <div onClick={() => joyrideClick()} className="coding-mobile__display__arrow">
+                ^
+              </div>
             </div>
           ) : (
             <div></div>
           )}
-          <div
-            style={scriptbeat ? scriptbeatStyle : null}
-            className="main-coding-mobile__links__link-container"
-            onClick={() => scriptbeatClick()}
-            onMouseLeave={() => setScriptbeat(false)}
-          >
-            <a
+          <div style={scriptbeat ? scriptbeatStyle : null} className="coding-mobile__sections__section-container">
+            <p
+              onClick={() => scriptbeatClick()}
               style={scriptbeat ? scriptbeatStyle : null}
-              className="main-coding-mobile__links__link-container__a"
-              href="https://www.scriptbeat.von-goose.com"
+              className="coding-mobile__sections__section-container__text"
             >
               SCRIPTBEAT
-            </a>
+            </p>
 
             {muted === false ? (
               <VolOnIcon
@@ -194,21 +202,36 @@ export default function CodingMobile() {
           </div>
           <div>
             {scriptbeat === true ? (
-              <div className="main-coding-mobile__display-container__scriptbeat">
-                <p className="main-coding-mobile__display-container__scriptbeat__p">
+              <div className="coding-mobile__display__scriptbeat">
+                <p className="coding-mobile__display__scriptbeat__p">
                   IS AN INTERACTIVE BROWSERBASED DRUMMACHINE AND SEQUENCER, BUILT WITH JAVASCRIPT AND THE WEB AUDIO API
                 </p>
 
-                <div className="main-coding-mobile__display-container__scriptbeat__video-container">
+                <div className="coding-mobile__display__scriptbeat__video-container">
                   <video
-                    className="main-coding-mobile__display-container__scriptbeat__video-container__video"
+                    className="coding-mobile__display__scriptbeat__video-container__video"
                     autoPlay
                     muted={muted}
                     loop
+                    onLoadStart={() => setIsLoading(false)}
                   >
                     <source src={scriptbeat_video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
+                  {isLoading && (
+                    <div className="coding-mobile__display__scriptwave__video-container__videoLoading">
+                      <p>Video loading</p>
+                      <span className="videoLoading-animation"></span>
+                    </div>
+                  )}
+                </div>
+                <div className="coding-mobile__display__link-container">
+                  <a href="https://joyride.digital" className="coding-mobile__display__link-container__link">
+                    SCRIPTBEAT----&#62;
+                  </a>
+                </div>
+                <div onClick={() => scriptbeatClick()} className="coding-mobile__display__arrow">
+                  ^
                 </div>
               </div>
             ) : (
@@ -216,25 +239,31 @@ export default function CodingMobile() {
             )}
           </div>
 
-          <div
-            style={addProject ? addprojectStyle : null}
-            onClick={() => addprojectClick()}
-            onMouseLeave={() => setAddProject(false)}
-            className="main-coding-mobile__links__link-container"
-          >
-            <Link
+          <div style={addProject ? addprojectStyle : null} className="coding-mobile__sections__section-container">
+            <p
               style={addProject ? addprojectStyle : null}
-              onClick={setContactFormColor(true)}
-              className="main-coding-mobile__links__link-container__a"
-              to={"/contact"}
+              onClick={() => addprojectClick()}
+              className="coding-mobile__sections__section-container__text"
             >
               ADD PROJECT +
-            </Link>
+            </p>
           </div>
           <div>
             {addProject === true ? (
-              <div className="main-coding-mobile__display-container__addproject">
-                <img className="main-coding-mobile__display-container__addproject__giffy" src={pixelman} alt=""></img>
+              <div className="coding-mobile__display__addproject">
+                <img className="coding-mobile__display__addproject__giffy" src={pixelman} alt=""></img>
+                <div className="coding-mobile__display__link-container">
+                  <Link
+                    onClick={setContactFormColor(true)}
+                    className="coding-mobile__display__link-container__link"
+                    to={"/contact"}
+                  >
+                    CONTACT ME----&#62;
+                  </Link>
+                </div>
+                <div onClick={() => addprojectClick()} className="coding-mobile__display__arrow">
+                  ^
+                </div>
               </div>
             ) : (
               <div></div>
@@ -242,7 +271,7 @@ export default function CodingMobile() {
           </div>
         </div>
 
-        <div className="main-coding-mobile__display-container"></div>
+        <div className="coding-mobile__display"></div>
       </main>
     </>
   );

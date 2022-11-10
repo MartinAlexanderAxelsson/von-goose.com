@@ -133,7 +133,7 @@ export default function MainPage() {
             <img className="links-container__link-3__img1" src={spotify} alt="spotify logo"></img>
           </a>
           {/* <a href="https://soundcloud.com/von_goose"> */}
-          <a href="https://www.music.von-goose.com">
+          <a href="https://music.von-goose.com">
             <img className="links-container__link-3__img2" src={tape} alt="soundcloud logo"></img>
           </a>
           <a href="https://www.youtube.com/channel/UCXxwh2DZVGyaw0OgdryEFwg?view_as=subscriber">
