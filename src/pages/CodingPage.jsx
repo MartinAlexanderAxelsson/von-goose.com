@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Coding from "./Coding";
-import CodingMobile from "./CodingMobile";
+import Coding from "../components/Coding";
+import CodingMobile from "../components/CodingMobile";
 import "./styles/codingPage.scss";
 
 export default function CodingPage() {

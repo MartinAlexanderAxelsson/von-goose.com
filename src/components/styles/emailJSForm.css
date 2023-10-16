@@ -1,28 +1,59 @@
 :root {
   --main-color: blue;
   --buttonBorder-color: rgba(0, 0, 255, 0.315);
+  --errorMess: red;
 }
 
-.emailJS__form-container {
-  display: flex;
+.loading:before {
+  font-size: 30px;
+  color: var(--main-color);
+  animation: loading 2s linear infinite;
+  content: "";
+}
 
+@keyframes loading {
+  0% {
+    content: ".";
+  }
+  20% {
+    content: "..";
+  }
+  40% {
+    content: "...";
+  }
+  60% {
+    content: "....";
+  }
+  80% {
+    content: ".....";
+  }
+  100% {
+    content: "......";
+  }
+}
+
+.form-container {
+  display: flex;
   justify-content: center;
 }
 
-.emailJS__form-container__form {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.emailJS__form-container__form__section {
+.form__section {
   display: flex;
   flex-direction: column;
 }
-.emailJS__form-container__form__section__input {
+
+.input {
   width: 280px;
   padding: 0px 0vw 0.2vw 0.2vw;
-  margin-bottom: 50px;
+
+  margin-top: 40px;
+
   border-left: none;
   border-right: none;
   border-top: none;
@@ -31,17 +62,30 @@
   outline: none;
   font-size: 12px;
 }
+.validation-error {
+  color: var(--errorMess);
+  margin-top: 5px;
+  padding: 0vw 0vw 0vw 0vw;
+  font-size: 12px;
+}
 
-.emailJS__form-container__form__section__input::placeholder {
+.validation-error__messageInput {
+  color: var(--errorMess);
+  margin: 0vw 0vw 0vw 0vw;
+  font-size: 12px;
+}
+
+.input::placeholder {
   color: var(--main-color);
   font-family: "Rubik", sans-serif;
 }
 
-.emailJS__form-container__form__textarea {
+.textarea {
   resize: none;
   overflow: hidden;
   width: 280px;
   padding: 0px 0vw 0.2vw 0.2vw;
+  margin-top: 40px;
   font-size: 12px;
   height: 18px;
   border-left: none;
@@ -49,14 +93,15 @@
   border-top: none;
   border-bottom: 2px solid var(--main-color);
   outline: none;
+  color: var(--main-color);
 }
 
-.emailJS__form-container__form__textarea::placeholder {
+.textarea::placeholder {
   color: var(--main-color);
   font-family: "Rubik", sans-serif;
 }
 
-.emailJS__form-container__form__button {
+.submit-button {
   background: none;
   color: var(--main-color);
   font-family: "Rubik", sans-serif;
@@ -70,13 +115,13 @@
   margin-top: 50px;
 }
 
-.emailJS__form-container__Form__button:hover:enabled {
+.submit-button:hover:enabled {
   cursor: pointer;
   background: var(--main-color);
   color: rgb(255, 255, 255);
 }
 
-.emailJS__form-container__form__button:active:enabled {
+.submit-button:active:enabled {
   background-image: url("../../images/smiley.png");
   height: 55.7px;
   background-position: center;
@@ -84,30 +129,56 @@
   background-size: contain;
 }
 
-.emailJS__form-container__form__button:disabled {
+.submit-button:disabled {
   border: 2px solid var(--buttonBorder-color);
   color: var(--buttonBorder-color);
 }
 
+.notificationSent {
+  color: green;
+  text-align: center;
+}
+
+.notificationNotSent {
+  color: var(--errorMess);
+  text-align: center;
+}
+
+.giffy {
+  width: 30px;
+  height: auto;
+  opacity: 0.8;
+  background: black;
+}
+.tryAgainBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: bold;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
-  .emailJS__form-container {
+  .form-container {
     display: flex;
     justify-content: center;
   }
 
-  .emailJS__form-container__form {
+  .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .emailJS__form-container__form__section {
+  .form__section {
     display: flex;
     flex-direction: row;
   }
 
-  .emailJS__form-container__form__section__input {
+  .input {
     width: 21vw;
     padding: 2vw 0vw 0.2vw 0.2vw;
     margin: 1vw;
@@ -119,17 +190,17 @@
     outline: none;
   }
 
-  .emailJS__form-container__form__section__input::placeholder {
+  .input::placeholder {
     color: var(--main-color);
     font-family: "Rubik", sans-serif;
   }
 
-  .emailJS__form-container__form__textarea {
+  .textarea {
     resize: none;
     overflow: hidden;
-    width: 44vw;
-    margin-top: 6vh;
-    padding: 0;
+    width: 44.5vw;
+    margin-top: 5vh;
+    padding: 0px;
     height: 18px;
     border-left: none;
     border-right: none;
@@ -138,12 +209,12 @@
     outline: none;
   }
 
-  .emailJS__form-container__form__textarea::placeholder {
+  .textarea::placeholder {
     color: var(--main-color);
     font-family: "Rubik", sans-serif;
   }
 
-  .emailJS__form-container__form__button {
+  .submit-button {
     background: none;
     color: var(--main-color);
     font-family: "Rubik", sans-serif;
@@ -156,13 +227,13 @@
     font-size: 18px;
   }
 
-  .emailJS__form-container__Form__button:hover:enabled {
+  .submit-button:hover:enabled {
     cursor: pointer;
     background: var(--main-color);
     color: rgb(255, 255, 255);
   }
 
-  .emailJS__form-container__form__button:active:enabled {
+  .submit-button:active:enabled {
     background-image: url("../../images/smiley.png");
     height: 55.7px;
     background-position: center;
@@ -170,8 +241,38 @@
     background-size: contain;
   }
 
-  .emailJS__form-container__form__button:disabled {
+  .submit-button:disabled {
     border: 2px solid var(--buttonBorder-color);
     color: var(--buttonBorder-color);
+  }
+
+  .validation-error {
+    margin: -0.5vw 0vw 0vw 1vw;
+  }
+
+  .notificationSent {
+    color: green;
+    text-align: center;
+  }
+
+  .notificationNotSent {
+    color: var(--errorMess);
+    text-align: center;
+  }
+
+  .giffy {
+    width: 2.5vw;
+    height: auto;
+    opacity: 0.8;
+    background: black;
+  }
+  .tryAgainBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-weight: bold;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
   }
 }
